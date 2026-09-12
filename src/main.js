@@ -1,5 +1,9 @@
-if (new URLSearchParams(location.search).get("view") === "city") {
+const view = new URLSearchParams(location.search).get("view");
+const path = location.pathname.replace(/\/$/, "");
+if (view === "city" || path === "/showcase/city") {
   await import("./city.js");
-} else {
+} else if (view === "distribution" || path === "/showcase/distribution") {
   await import("./dtia.js");
+} else {
+  await import("./lab.js");
 }

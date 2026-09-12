@@ -5,7 +5,7 @@ test("DTIA monitoring, feeder filters, analytics and offline assets work", async
 }) => {
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto("/");
+  await page.goto("/showcase/distribution");
   await page.waitForFunction(() => window.__dtiaReady);
   await expect(page).toHaveTitle("Digital Twin Research Center for Infrastructure Assets (DTIA)");
   await expect(page.locator("#p-online")).toHaveText("7/ 8");
@@ -43,7 +43,7 @@ test("DTIA monitoring, feeder filters, analytics and offline assets work", async
 test("scenarios conserve active power, improve sample balance and export consistent data", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/showcase/distribution");
   await page.waitForFunction(() => window.__dtiaReady);
   const values = () =>
     page.evaluate(() => {
@@ -101,7 +101,7 @@ test("DTIA mobile interface fits and keeps controls usable", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/");
+  await page.goto("/showcase/distribution");
   await page.waitForFunction(() => window.__dtiaReady);
   expect(
     await page.evaluate(

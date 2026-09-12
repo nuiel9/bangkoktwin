@@ -131,6 +131,8 @@ landmarkList.innerHTML = landmarks
   )
   .join("");
 createIcons({ icons });
+document.querySelector('.brand').href = '/';
+document.querySelector('.brand').setAttribute('aria-label', 'DTIA lab home');
 const viewport = document.querySelector("#viewport");
 const metricCards = document.querySelectorAll(".metrics article");
 metricCards[0].querySelector(".metric-foot").innerHTML =

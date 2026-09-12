@@ -1,6 +1,17 @@
 # Digital Twin Research Center for Infrastructure Assets (DTIA)
 
-The DTIA lab showcase brings infrastructure assets to life through interactive monitoring, analytics and simulation. The default distribution asset demonstration includes a Blender coastal district, eight synthetic transformers, two sample feeders and power-quality what-if controls. The Bangkok city demonstration remains available at `/?view=city`.
+DTIA's public research-lab website introduces its mission, research directions, approach and working demonstrators. The homepage uses a live 3D view of the existing Blender city model; showcase images are captured from the actual apps. It includes project notes, category filters, accessible mobile navigation, reduced-motion controls and the supplied public contact address: **suwilai.ph@kmitl.ac.th**. No university affiliation, staff, publications or partnerships are asserted.
+
+## Website and showcase routes
+
+- `/` — DTIA research lab website.
+- `/showcase/distribution` — distribution asset digital twin, with a Blender coastal district, eight synthetic transformers, two sample feeders and power-quality what-if controls.
+- `/showcase/city` — Bangkok city digital twin.
+- `/?view=distribution` and `/?view=city` — compatible alternate showcase links.
+
+Both demonstrators link back to the lab homepage. Links perform normal page navigation so the distinct website and dashboard styles remain isolated. The host must serve `index.html` for client routes; Vite dev and preview provide this automatically.
+
+The public site is implemented in `src/lab.js` and `src/lab.css`; `src/lab-visual.js` renders the hero from the real city asset. `public/lab` contains images of the working demonstrators. The current mission and research directions are editorial framing for the lab website; demonstrator notes distinguish implemented capabilities from simulation assumptions.
 
 Run `npm install` followed by `npm run dev`, then open **http://localhost:5174/**. Both development and preview use strict port 5174; they fail clearly if it is occupied instead of silently using a different port.
 
