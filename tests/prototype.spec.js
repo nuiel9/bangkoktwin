@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 test("Blender scene and simulation controls work", async ({ page }) => {
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto("http://localhost:5173");
+  await page.goto("/?view=city");
   await page.waitForFunction(() => window.__cityReady);
   await expect(page.locator("#viewport canvas")).toBeVisible();
   expect(await page.evaluate(() => window.__twin.buildingGroups.length)).toBe(
@@ -51,7 +51,7 @@ test("mobile layout fits and landmark controls remain usable", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("http://localhost:5173");
+  await page.goto("/?view=city");
   await page.waitForFunction(() => window.__cityReady);
   expect(
     await page.evaluate(
@@ -83,7 +83,7 @@ test("station readings, offline handling, flood extent and CSV stay consistent",
 }) => {
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto("http://localhost:5173");
+  await page.goto("/?view=city");
   await page.waitForFunction(() => window.__cityReady);
   await page.locator("#station-select").selectOption("AQ-01");
   await page.locator("#time").fill("1080");

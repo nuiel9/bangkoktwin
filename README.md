@@ -1,4 +1,36 @@
-# Bangkok Digital Twin — prototype
+# PEA Distribution Digital Twin & Bangkok City Prototype
+
+The default app is a PEA-inspired transformer digital twin with a new Blender coastal district, eight synthetic transformer assets, two sample feeders, DTMS monitoring, DTMA utilization analysis and TPO what-if simulation. The original Bangkok demonstration remains available at `/?view=city`.
+
+Run `npm install` followed by `npm run dev`, then open **http://localhost:5174/**. Both development and preview use strict port 5174; they fail clearly if it is occupied instead of silently using a different port.
+
+## PEA demonstration
+
+The product concepts follow [PEA's DTMS / DTMA / TPO overview](https://www.pea.co.th/about-pea/sgi/data-analytics/dtms-dtma-tpo): transformer monitoring, fleet-level analysis and power-quality compensation. This is an independent concept prototype, not an official PEA application or a connection to its operational systems.
+
+- **DTMS:** select an asset on the 3D network or in the inspector. View synthetic apparent/active power, phase voltage/current/loading, oil temperature, power factor and a daily loading profile.
+- **DTMA:** compare a 24-hour utilization heatmap, filter by sample feeder, search the review queue and inspect the illustrative risk ranking.
+- **TPO:** preview or enable compensation for the selected online transformer. The model reduces phase imbalance and harmonic distortion and raises power factor, while preserving active demand. Selecting a different asset clears compensation.
+- **Scenarios:** EV demand and time-dependent solar generation affect all sample assets; the feeder selector only filters the view. The timeline, fleet totals, inspector, model labels, queue and export share one deterministic model.
+- **Export:** download the filtered fleet at the selected sample time with scenario parameters and synthetic-data provenance. Offline values are blank, not zero. Offline telemetry does not imply an outage.
+
+### Model assumptions
+
+All asset names, locations, customer counts, ratings, readings, feeder connectivity and alarm rules are invented for the demonstration. The coastal model is Pattaya-inspired, not georeferenced. No operational switching, maintenance orders or remote hardware controls exist.
+
+`src/power.js` defines the sample formulas. Apparent power is active power divided by the assumed power factor; total loading is apparent power / capacity. Phase weights sum to three, so their average matches total loading. Scenario current imbalance is the maximum phase-current deviation from the mean, divided by the mean. Fleet utilization is weighted by online transformer capacity. Risk is a bounded illustrative score from load, current imbalance and undervoltage flags; it is not PEA's risk methodology.
+
+Demo review thresholds: total/phase loading above 100%, current imbalance above 20%, phase voltage below 207 V, temperature above 80°C, or loading below 25%. TPO's assumed power factor (0.98), harmonic distortion (3.2%) and compensation effect are not validated performance claims. Solar output follows daylight; EV and solar inputs are scenario adoption/growth parameters, not capacity forecasts. These simplified formulas are not a three-phase power-flow, harmonic or thermal solver.
+
+Assets are defined in `public/data/pea-assets.json`, shared by the browser model and the Blender generator:
+
+```sh
+blender --background --python blender/build_pea.py
+```
+
+The editable result is `blender/pea-distribution.blend`; the browser loads `public/models/pea-distribution.glb`. Both are included.
+
+## Original Bangkok demonstration
 
 A responsive city intelligence dashboard built with Three.js and a real Blender asset pipeline. Includes a procedural city district, stylized Bangkok landmarks, Chao Phraya river, orbit and overhead views, selectable landmarks, animated traffic, environmental overlays, and a simulated 24-hour timeline.
 
@@ -23,7 +55,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:5173. The exported model is included, so Blender is only needed when rebuilding assets.
+Open http://localhost:5174/?view=city. The exported model is included, so Blender is only needed when rebuilding assets.
 
 ```sh
 npm run build

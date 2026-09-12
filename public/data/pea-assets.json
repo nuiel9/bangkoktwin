@@ -1,0 +1,98 @@
+[
+  {
+    "id": "DT-001",
+    "name": "Beach Road",
+    "feeder": "PTY-01",
+    "capacity": 400,
+    "customers": 186,
+    "x": -45,
+    "z": -64,
+    "base": 0.69,
+    "imbalance": 0.08,
+    "online": true
+  },
+  {
+    "id": "DT-002",
+    "name": "Central Market",
+    "feeder": "PTY-01",
+    "capacity": 630,
+    "customers": 248,
+    "x": -23,
+    "z": -20,
+    "base": 0.91,
+    "imbalance": 0.31,
+    "online": true
+  },
+  {
+    "id": "DT-003",
+    "name": "Commercial Quarter",
+    "feeder": "PTY-01",
+    "capacity": 400,
+    "customers": 212,
+    "x": -43,
+    "z": 30,
+    "base": 1.04,
+    "imbalance": 0.48,
+    "online": true
+  },
+  {
+    "id": "DT-004",
+    "name": "South Waterfront",
+    "feeder": "PTY-01",
+    "capacity": 250,
+    "customers": 124,
+    "x": -17,
+    "z": 73,
+    "base": 0.74,
+    "imbalance": 0.12,
+    "online": true
+  },
+  {
+    "id": "DT-005",
+    "name": "Residential East",
+    "feeder": "PTY-02",
+    "capacity": 400,
+    "customers": 195,
+    "x": 50,
+    "z": -59,
+    "base": 0.66,
+    "imbalance": 0.28,
+    "online": true
+  },
+  {
+    "id": "DT-006",
+    "name": "Future Growth Zone",
+    "feeder": "PTY-02",
+    "capacity": 630,
+    "customers": 52,
+    "x": 75,
+    "z": -14,
+    "base": 0.14,
+    "imbalance": 0.12,
+    "online": true
+  },
+  {
+    "id": "DT-007",
+    "name": "EV Mobility Hub",
+    "feeder": "PTY-02",
+    "capacity": 630,
+    "customers": 169,
+    "x": 45,
+    "z": 32,
+    "base": 0.84,
+    "imbalance": 0.38,
+    "online": true
+  },
+  {
+    "id": "DT-008",
+    "name": "Community Centre",
+    "feeder": "PTY-02",
+    "capacity": 250,
+    "customers": 87,
+    "x": 72,
+    "z": 77,
+    "base": 0.55,
+    "imbalance": 0.16,
+    "online": false
+  }
+]
