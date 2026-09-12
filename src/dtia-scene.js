@@ -36,18 +36,18 @@ export function createPowerScene(viewport, onSelect) {
   scene.add(grid);
   const context = [];
   new GLTFLoader().load(
-    "/models/pea-distribution.glb",
+    "/models/dtia-distribution.glb",
     (g) => {
       scene.add(g.scene);
       g.scene.traverse((o) => {
         if (o.isMesh && o.name === "Buildings") context.push(o);
       });
-      document.querySelector("#pea-loading").remove();
-      window.__peaReady = true;
+      document.querySelector("#dtia-loading").remove();
+      window.__dtiaReady = true;
     },
     undefined,
     () => {
-      document.querySelector("#pea-loading").textContent =
+      document.querySelector("#dtia-loading").textContent =
         "Model unavailable. Reload to retry.";
     },
   );
@@ -110,8 +110,8 @@ export function createPowerScene(viewport, onSelect) {
   }
   function setMode(overhead) {
     controls.enableRotate = !overhead;
-    document.querySelector("#pea-2d").classList.toggle("selected", overhead);
-    document.querySelector("#pea-3d").classList.toggle("selected", !overhead);
+    document.querySelector("#dtia-2d").classList.toggle("selected", overhead);
+    document.querySelector("#dtia-3d").classList.toggle("selected", !overhead);
   }
   function reset() {
     setMode(false);
@@ -120,9 +120,9 @@ export function createPowerScene(viewport, onSelect) {
       center: new THREE.Vector3(4, 0, 0),
     };
   }
-  document.querySelector("#pea-reset").onclick = reset;
-  document.querySelector("#pea-3d").onclick = reset;
-  document.querySelector("#pea-2d").onclick = () => {
+  document.querySelector("#dtia-reset").onclick = reset;
+  document.querySelector("#dtia-3d").onclick = reset;
+  document.querySelector("#dtia-2d").onclick = () => {
     setMode(true);
     target = {
       position: new THREE.Vector3(4, 345, 0.1),
@@ -130,8 +130,8 @@ export function createPowerScene(viewport, onSelect) {
     };
   };
   for (const [id, factor] of [
-    ["pea-zoom-in", 0.8],
-    ["pea-zoom-out", 1.2],
+    ["dtia-zoom-in", 0.8],
+    ["dtia-zoom-out", 1.2],
   ])
     document.querySelector(`#${id}`).onclick = () => {
       target = null;
@@ -141,11 +141,11 @@ export function createPowerScene(viewport, onSelect) {
         .multiplyScalar(THREE.MathUtils.clamp(old * factor, 28, 650) / old)
         .add(controls.target);
     };
-  document.querySelector("#pea-buildings").onchange = (e) =>
+  document.querySelector("#dtia-buildings").onchange = (e) =>
     context.forEach((o) => (o.visible = e.target.checked));
-  document.querySelector("#pea-feeders").onchange = (e) =>
+  document.querySelector("#dtia-feeders").onchange = (e) =>
     (routes.visible = e.target.checked);
-  document.querySelector("#pea-labels").onchange = (e) =>
+  document.querySelector("#dtia-labels").onchange = (e) =>
     (labels = e.target.checked);
   function update(rows, selected) {
     const visible = new Map(rows.map((r) => [r.asset.id, r]));

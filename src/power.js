@@ -1,14 +1,12 @@
-import assets from "../public/data/pea-assets.json";
+import assets from "../public/data/dtia-assets.json";
 export { assets };
-export const sourceUrl =
-  "https://www.pea.co.th/about-pea/sgi/data-analytics/dtms-dtma-tpo";
 export const formatTime = (minutes) =>
   `${String(Math.floor(minutes / 60) % 24).padStart(2, "0")}:${String(Math.floor(minutes % 60)).padStart(2, "0")}`;
 export const defaults = () => ({
   minute: 1080,
   ev: 0,
   solar: 0,
-  tpo: false,
+  optimize: false,
   selected: "DT-003",
   feeder: "all",
 });
@@ -16,7 +14,7 @@ export const defaults = () => ({
 export function reading(
   asset,
   state,
-  optimized = state.tpo && asset.id === state.selected,
+  optimized = state.optimize && asset.id === state.selected,
 ) {
   if (!asset.online) return null;
   const h = state.minute / 60;
@@ -52,7 +50,7 @@ export function reading(
   const temp = 31 + (loading / 100) ** 1.7 * 39;
   const thd = optimized ? 3.2 : 5.1 + asset.imbalance * 6;
   const issues = [];
-  // Demonstration thresholds, not PEA alarm policy or a certified power-flow model.
+  // Demonstration thresholds, not operational policy or a certified power-flow model.
   if (loading > 100) issues.push("Overload");
   if (Math.max(...phases) > 100 && loading <= 100)
     issues.push("Phase overload");

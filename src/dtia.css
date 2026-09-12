@@ -170,6 +170,7 @@ h1 {
   margin: 11px 0 9px;
 }
 h1 em {
+  display: block;
   font-style: normal;
   color: #9f93b9;
   font-weight: 500;
@@ -363,14 +364,14 @@ select {
   display: flex;
   flex-direction: column;
 }
-#pea-viewport {
+#dtia-viewport {
   position: relative;
   flex: 1;
   min-height: 450px;
   overflow: hidden;
   background: #121523;
 }
-#pea-viewport canvas {
+#dtia-viewport canvas {
   position: absolute;
   inset: 0;
   display: block;
@@ -378,7 +379,7 @@ select {
   height: 100%;
   touch-action: none;
 }
-#pea-loading {
+#dtia-loading {
   position: absolute;
   inset: 0;
   display: grid;
@@ -450,7 +451,7 @@ select {
   margin-top: 12px;
 }
 .p-layers input,
-.p-tpo-switch input {
+.p-optimize-switch input {
   appearance: none;
   position: relative;
   width: 24px;
@@ -462,7 +463,7 @@ select {
   flex-shrink: 0;
 }
 .p-layers input:after,
-.p-tpo-switch input:after {
+.p-optimize-switch input:after {
   content: "";
   position: absolute;
   top: 3px;
@@ -474,11 +475,11 @@ select {
   transition: transform 0.2s;
 }
 .p-layers input:checked,
-.p-tpo-switch input:checked {
+.p-optimize-switch input:checked {
   background: #6f549a;
 }
 .p-layers input:checked:after,
-.p-tpo-switch input:checked:after {
+.p-optimize-switch input:checked:after {
   transform: translateX(11px);
   background: #e0ceff;
 }
@@ -556,7 +557,7 @@ select {
   background: #191a29;
   border-top: 1px solid var(--p-line);
 }
-#pea-play {
+#dtia-play {
   background: #392b4e;
   border: 1px solid #614983;
   width: 30px;
@@ -935,7 +936,7 @@ td small {
   margin: 0 0 22px;
   cursor: pointer;
 }
-.p-tpo-switch {
+.p-optimize-switch {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -944,30 +945,30 @@ td small {
   padding: 14px 0;
   margin: 4px 0 15px;
 }
-.p-tpo-switch b {
+.p-optimize-switch b {
   font-size: 10px;
   font-weight: 500;
 }
-.p-tpo-switch small {
+.p-optimize-switch small {
   display: block;
   font-size: 8px;
   color: #927c9f;
   margin-top: 5px;
 }
-.p-tpo-switch input {
+.p-optimize-switch input {
   width: 29px;
   height: 17px;
 }
-.p-tpo-switch input:after {
+.p-optimize-switch input:after {
   width: 9px;
   height: 9px;
   top: 4px;
   left: 4px;
 }
-.p-tpo-switch input:checked:after {
+.p-optimize-switch input:checked:after {
   transform: translateX(12px);
 }
-.p-tpo-switch input:disabled {
+.p-optimize-switch input:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
@@ -1040,6 +1041,7 @@ td small {
 .p-footer a {
   color: #a28bad;
 }
+.p-footer button { color: #a28bad; font-size: inherit; padding: 0; }
 .p-analytics {
   padding-bottom: 20px;
 }
@@ -1149,7 +1151,7 @@ dialog a {
   color: #d0adf1;
   margin-top: 16px;
 }
-#pea-info-close {
+#dtia-info-close {
   float: right;
   font-size: 25px;
   margin: -15px -10px 0 0;
@@ -1158,7 +1160,7 @@ dialog a {
   .p-grid {
     grid-template-columns: minmax(0, 1fr) 345px;
   }
-  #pea-viewport {
+  #dtia-viewport {
     min-height: 520px;
   }
   .p-reading-grid strong {
@@ -1243,7 +1245,7 @@ dialog a {
   .p-metrics {
     grid-template-columns: repeat(2, 1fr);
   }
-  #pea-viewport {
+  #dtia-viewport {
     min-height: 500px;
   }
   .p-mode-copy p {
@@ -1392,7 +1394,7 @@ dialog a {
     padding: 0 13px;
     font-size: 9px;
   }
-  #pea-viewport {
+  #dtia-viewport {
     min-height: 440px;
   }
   .p-map-note {

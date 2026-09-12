@@ -2,7 +2,7 @@
 import bpy, json, os, random
 from mathutils import Vector
 root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-with open(os.path.join(root, 'public/data/pea-assets.json')) as f: assets = json.load(f)
+with open(os.path.join(root, 'public/data/dtia-assets.json')) as f: assets = json.load(f)
 random.seed(23)
 bpy.ops.object.select_all(action='SELECT'); bpy.ops.object.delete(use_global=False)
 def material(name, color, metallic=0):
@@ -34,7 +34,7 @@ for a in assets:
  for dx in [-1.6,0,1.6]:box(prefix+' terminal',x+dx,z,5.2,.45,.5,1.4,porcelain)
  for side in [-1,1]:
   for i in range(7):box(prefix+' radiator fin',x+side*2.8,z-1.5+i*.5,1.2,.7,.2,3,steel)
- box(prefix+' TPO enclosure',x+4,z,.8,1.7,2,3.2,purple)
+ box(prefix+' Compensation enclosure',x+4,z,.8,1.7,2,3.2,purple)
  box(prefix+' identification',x,z+2.1,2.2,2.4,.12,.9,gold)
  for dx in [-4.5,4.5]:box(prefix+' protection bollard',x+dx,z+3.5,.8,.25,.25,1.4,gold)
 box('Primary substation',8,-99,.2,22,14,.8,slab)
@@ -49,5 +49,5 @@ for m in list(bpy.data.materials):
  bpy.context.view_layer.objects.active=objs[0];bpy.ops.object.join();bpy.context.object.name=m.name
 bpy.ops.object.light_add(type='AREA',location=(50,-40,150));bpy.context.object.data.energy=2000;bpy.context.object.data.size=120
 bpy.ops.object.camera_add(location=(220,-260,220));cam=bpy.context.object;cam.rotation_euler=(Vector((0,0,0))-cam.location).to_track_quat('-Z','Y').to_euler();cam.data.type='ORTHO';cam.data.ortho_scale=330;bpy.context.scene.camera=cam
-bpy.ops.wm.save_as_mainfile(filepath=os.path.join(root,'blender/pea-distribution.blend'))
-bpy.ops.export_scene.gltf(filepath=os.path.join(root,'public/models/pea-distribution.glb'),export_format='GLB',export_cameras=False,export_lights=False)
+bpy.ops.wm.save_as_mainfile(filepath=os.path.join(root,'blender/dtia-distribution.blend'))
+bpy.ops.export_scene.gltf(filepath=os.path.join(root,'public/models/dtia-distribution.glb'),export_format='GLB',export_cameras=False,export_lights=False)

@@ -1,5 +1,5 @@
 if (new URLSearchParams(location.search).get("view") === "city") {
   await import("./city.js");
 } else {
-  await import("./pea.js");
+  await import("./dtia.js");
 }
